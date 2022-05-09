@@ -1,0 +1,6 @@
+{
+  "name": "express-gateway-plugin-signature-verify",
+  "version": "1.2.4",
+  "main": "manifest.js",
+  "license": "UNLICENSED"
+}
