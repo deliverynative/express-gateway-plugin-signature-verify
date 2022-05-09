@@ -1,4 +1,6 @@
 const crypto = require('crypto');
+const bodyParser = require('body-parser')
+const jsonParser = bodyParser.json()
 
 module.exports = {
   name: 'signature-verify',
@@ -19,7 +21,10 @@ module.exports = {
 					const sig = req.headers[signature]
 					let payload = '';
 					if(endpoint) payload += (endpoint + "\n")
-					if(body) payload += (req.body + "\n")
+					if(body) {
+						const reqBody =  jsonParser(req)
+						payload += (reqBody + "\n")
+					}
 					headers.forEach((x, i) => {
 						payload += req.headers[x];
 						if(i < headers.length - 1) payload += "\n"
